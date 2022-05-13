@@ -1,4 +1,4 @@
-package com.example.provaerp;
+package com.juliano.provaerp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
