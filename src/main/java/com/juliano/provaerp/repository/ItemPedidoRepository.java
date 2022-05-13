@@ -8,4 +8,7 @@ import java.util.UUID;
 
 @Repository
 public interface ItemPedidoRepository extends JpaRepository<ItemPedido, UUID> {
+    public ItemPedido findByCodigo(Integer codigo);
+
+    public void deleteByCodigo(Integer codigo);
 }
