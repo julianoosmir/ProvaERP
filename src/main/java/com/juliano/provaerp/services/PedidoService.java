@@ -1,5 +1,6 @@
 package com.juliano.provaerp.services;
 
+import com.juliano.provaerp.Enum.PedidoSituacaoEnum;
 import com.juliano.provaerp.Enum.ProdutoCategoriaEnum;
 import com.juliano.provaerp.dto.PedidoDTO;
 import com.juliano.provaerp.entity.Pedido;
@@ -54,7 +55,8 @@ public class PedidoService {
         BigDecimal valorDosProdutos = calcularValorDosProdutos(pedido.getItemPedido()
                 .getQuantidade(), produto.getPreco());
 
-        if (produto.getCategoria().equals(ProdutoCategoriaEnum.BemDeConsumo)) {
+        if (produto.getCategoria().equals(ProdutoCategoriaEnum.BemDeConsumo)
+                && pedido.getSituacao().equals(PedidoSituacaoEnum.Aberto)) {
             return calcularDesconto(valorDosProdutos, pedido.getDesconto());
         }
         return valorDosProdutos;

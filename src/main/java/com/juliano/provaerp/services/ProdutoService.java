@@ -23,12 +23,17 @@ public class ProdutoService {
         return produtoRepository.findAll();
     }
 
-    public Page<Produto> buscarTodosProdutosPaginado(int page, int size){
+    public Page<Produto> buscarTodosProdutosPaginado(int page, int size) {
         Pageable pages = PageRequest.of(page, size);
         return produtoRepository.findAll(pages);
     }
-    public Produto buscarPorCodigo(Integer codigo){
-       return produtoRepository.findByCodigo(codigo);
+
+    public Produto buscarPorCodigo(Integer codigo) {
+        return produtoRepository.findByCodigo(codigo);
+    }
+
+    public Produto buscarPorCodigo(UUID codigo) {
+        return produtoRepository.findById(codigo).get();
     }
 
     public Produto salvarProduto(Produto produto) {
@@ -39,8 +44,17 @@ public class ProdutoService {
     public Produto atualizarProduto(Produto produto) {
         return produtoRepository.save(produto);
     }
+
     @Transactional
-    public void deletarProduto(Integer codigo){
-        produtoRepository.deleteByCodigo(codigo);
+    public void deletarProduto(UUID codigo) {
+        if (!verificarProdutoNoPedido(buscarPorCodigo(codigo))) {
+            produtoRepository.deleteById(codigo);
+        }
+
+    }
+
+    private boolean verificarProdutoNoPedido(Produto produto) {
+        List<Produto> produtosEmPedidos = produtoRepository.buscarProdutosEmPedidos(produto.getId());
+        return produtosEmPedidos.isEmpty();
     }
 }

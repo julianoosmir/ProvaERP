@@ -15,7 +15,6 @@ public interface PedidoRepository extends JpaRepository<Pedido, UUID> {
     @Query("SELECT pe FROM Pedido pe JOIN FETCH pe.itemPedido item JOIN FETCH item.produto")
     public List<Pedido> buscarTodosOsPedidos();
 
-
     @Query("SELECT pe FROM Pedido pe JOIN FETCH pe.itemPedido  item JOIN FETCH item.produto WHERE pe.codigo = ?1")
     public Pedido buscarPedidoPorCodigo(Integer codigo);
 

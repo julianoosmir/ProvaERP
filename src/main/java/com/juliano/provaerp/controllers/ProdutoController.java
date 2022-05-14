@@ -39,7 +39,7 @@ public class ProdutoController {
     }
 
     @DeleteMapping("/{codigo}")
-    public void deletarProduto(@PathVariable Integer codigo) {
+    public void deletarProduto(@PathVariable UUID codigo) {
         produtoService.deletarProduto(codigo);
     }
 }
