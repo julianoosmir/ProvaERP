@@ -50,7 +50,6 @@ public class ProdutoService {
         if (!verificarProdutoNoPedido(buscarPorCodigo(codigo))) {
             produtoRepository.deleteById(codigo);
         }
-
     }
 
     private boolean verificarProdutoNoPedido(Produto produto) {
