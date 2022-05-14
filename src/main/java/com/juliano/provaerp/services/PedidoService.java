@@ -6,6 +6,10 @@ import com.juliano.provaerp.entity.Pedido;
 import com.juliano.provaerp.entity.Produto;
 import com.juliano.provaerp.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -21,6 +25,12 @@ public class PedidoService {
 
     public List<Pedido> buscarTodosOsPedidos() {
         return pedidoRepository.buscarTodosOsPedidos();
+    }
+
+    public Page<Pedido> buscarTodosOsPedidosPaginados(int page, int size) {
+        List<Pedido> pedidos = buscarTodosOsPedidos();
+        Pageable pages = PageRequest.of(page, size);
+        return new PageImpl<>(pedidos, pages, size);
     }
 
     public Pedido buscarPorCodigo(Integer codigo) {

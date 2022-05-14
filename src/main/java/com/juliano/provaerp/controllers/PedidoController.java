@@ -5,6 +5,7 @@ import com.juliano.provaerp.entity.Pedido;
 import com.juliano.provaerp.entity.Produto;
 import com.juliano.provaerp.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,10 @@ public class PedidoController {
     @GetMapping
     public List<Pedido> buscarTodosOsPedidos(){
         return pedidoService.buscarTodosOsPedidos();
+    }
+    @GetMapping("/paginado")
+    public Page<Pedido> buscarTodosOsPedidos(@RequestParam("page") int page, @RequestParam("size") int size){
+        return pedidoService.buscarTodosOsPedidosPaginados(page,size);
     }
     @GetMapping("/{codigo}")
     public Pedido buscarPorProdutoId(@PathVariable Integer codigo){
