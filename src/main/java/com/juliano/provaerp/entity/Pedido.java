@@ -25,7 +25,8 @@ public class Pedido {
     @Column(name = "pe_situacao", nullable = false)
     @Enumerated(EnumType.STRING)
     private PedidoSituacaoEnum situacao;
-
+    @Column(name = "pe_total", nullable = false)
+    private BigDecimal valorTotal;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ip_id", referencedColumnName = "ip_id")
     private ItemPedido itemPedido;

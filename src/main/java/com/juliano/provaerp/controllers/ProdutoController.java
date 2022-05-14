@@ -20,7 +20,7 @@ public class ProdutoController {
         return produtoService.buscarTodosProdutos();
     }
 
-    @GetMapping("{codigo}")
+    @GetMapping("/{codigo}")
     public Produto buscarPorProdutoId(@PathVariable Integer codigo){
         return produtoService.buscarPorCodigo(codigo);
     }
