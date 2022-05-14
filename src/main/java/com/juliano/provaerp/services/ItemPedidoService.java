@@ -2,6 +2,7 @@ package com.juliano.provaerp.services;
 
 import com.juliano.provaerp.entity.ItemPedido;
 import com.juliano.provaerp.repository.ItemPedidoRepository;
+import org.hibernate.engine.internal.JoinSequence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +15,11 @@ public class ItemPedidoService {
     private ItemPedidoRepository itemPedidoRepository;
 
     public List<ItemPedido> buscarTodosOsItensPedidos() {
-        return itemPedidoRepository.findAll();
+        return itemPedidoRepository.buscarTodos();
     }
 
     public ItemPedido buscarItemPorCodigo(Integer codigo) {
-        return itemPedidoRepository.findByCodigo(codigo);
+        return itemPedidoRepository.buscarPorCodigo(codigo);
     }
 
     public ItemPedido salvarItemPedido(ItemPedido itemPedido) {
