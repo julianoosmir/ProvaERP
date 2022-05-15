@@ -48,7 +48,7 @@ public class PedidoService {
         return pedidoRepository.save(pedido);
     }
 
-    private BigDecimal calcularValorTotal(Pedido pedido) {
+    public BigDecimal calcularValorTotal(Pedido pedido) {
         Produto produto = pedido.getItemPedido().getProduto();
         Integer quantidade = pedido.getItemPedido().getQuantidade();
 
@@ -62,15 +62,14 @@ public class PedidoService {
         return valorDosProdutos;
     }
 
-    private BigDecimal calcularDesconto(BigDecimal valorDosProdutos, BigDecimal desconto) {
+    public BigDecimal calcularDesconto(BigDecimal valorDosProdutos, BigDecimal desconto) {
         BigDecimal valorInicial = valorDosProdutos;
         BigDecimal valorDesconto = valorDosProdutos.multiply(desconto).divide(BigDecimal.valueOf(100));
         return valorInicial.subtract(valorDesconto);
     }
 
-    private BigDecimal calcularValorDosProdutos(Integer quantidade, BigDecimal preco) {
+    public BigDecimal calcularValorDosProdutos(Integer quantidade, BigDecimal preco) {
         return preco.multiply(BigDecimal.valueOf(quantidade));
-
     }
 
     public Pedido atualizarPedido(PedidoDTO dto) {
