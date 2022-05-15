@@ -32,7 +32,7 @@ public class ProdutoService {
         return produtoRepository.findByCodigo(codigo);
     }
 
-    public Produto buscarPorCodigo(UUID codigo) {
+    public Produto buscarPorId(UUID codigo) {
         return produtoRepository.findById(codigo).get();
     }
 
@@ -47,12 +47,12 @@ public class ProdutoService {
 
     @Transactional
     public void deletarProduto(UUID codigo) {
-        if (!verificarProdutoNoPedido(buscarPorCodigo(codigo))) {
+        if (!verificarProdutoNoPedido(buscarPorId(codigo))) {
             produtoRepository.deleteById(codigo);
         }
     }
 
-    private boolean verificarProdutoNoPedido(Produto produto) {
+    public boolean verificarProdutoNoPedido(Produto produto) {
         List<Produto> produtosEmPedidos = produtoRepository.buscarProdutosEmPedidos(produto.getId());
         return produtosEmPedidos.isEmpty();
     }

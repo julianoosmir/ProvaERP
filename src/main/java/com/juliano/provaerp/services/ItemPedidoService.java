@@ -30,7 +30,7 @@ public class ItemPedidoService {
     }
 
     public Page<ItemPedido> buscarTodosOsPedidosPaginados(int page, int size) {
-        List<ItemPedido> itemPedidos = buscarTodosOsItensPedidos();
+        List<ItemPedido> itemPedidos = itemPedidoRepository.buscarTodos();
         Pageable pages = PageRequest.of(page, size);
         return new PageImpl<>(itemPedidos, pages, size);
     }
@@ -48,7 +48,7 @@ public class ItemPedidoService {
     }
 
     public Produto adcionarProdutoAoPedido(UUID idProduto) throws Exception {
-        Produto produto = produtoService.buscarPorCodigo(idProduto);
+        Produto produto = produtoService.buscarPorId(idProduto);
         if (produto.getSituacao().equals(ProdutoSituacaoEnum.Desativado)) {
             throw new Exception("produto desativado");
         }
