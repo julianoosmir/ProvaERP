@@ -29,7 +29,8 @@ public class ItemPedidoController {
         return itemPedidoService.buscarTodosOsItensPedidos();
     }
 
-    public ItemPedido buscarItemPorCodigo(Integer codigo) {
+    @GetMapping("/{codigo}")
+    public ItemPedido buscarItemPorCodigo(@PathVariable Integer codigo) {
         return itemPedidoService.buscarItemPorCodigo(codigo);
     }
 

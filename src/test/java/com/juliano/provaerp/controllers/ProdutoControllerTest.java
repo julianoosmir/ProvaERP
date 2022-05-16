@@ -7,7 +7,6 @@ import com.juliano.provaerp.Enum.ProdutoSituacaoEnum;
 import com.juliano.provaerp.entity.Produto;
 import com.juliano.provaerp.repository.ProdutoRepository;
 import com.juliano.provaerp.services.ProdutoService;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
@@ -23,12 +22,8 @@ import org.springframework.web.context.WebApplicationContext;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.hamcrest.Matchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
