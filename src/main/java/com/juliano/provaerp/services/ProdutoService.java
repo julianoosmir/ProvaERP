@@ -57,7 +57,7 @@ public class ProdutoService {
     }
 
     public boolean verificarProdutoNoPedido(Produto produto) {
-        List<Produto> produtosEmPedidos = itemPedidoRepository.buscarProdutosEmItensPedidos(produto.getId());
+        List<Produto> produtosEmPedidos = itemPedidoRepository.buscarProdutosEmPedidos(produto.getId());
         return produtosEmPedidos.isEmpty();
     }
 }

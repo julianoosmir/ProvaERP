@@ -11,14 +11,12 @@ import java.util.UUID;
 
 @Repository
 public interface ItemPedidoRepository extends JpaRepository<ItemPedido, UUID> {
-    @Query("SELECT item FROM ItemPedido item JOIN FETCH item.produto WHERE item.codigo = ?1")
+    @Query("SELECT item FROM ItemPedido item JOIN  item.produto WHERE item.codigo = ?1")
     public ItemPedido buscarPorCodigo(Integer codigo);
 
-    @Query("SELECT item FROM ItemPedido item JOIN FETCH item.produto")
+    @Query("SELECT item FROM ItemPedido item JOIN item.produto")
     public List<ItemPedido> buscarTodos();
-
-    @Query("SELECT item.produto FROM ItemPedido item JOIN FETCH item.produto pro WHERE pro.id = ?1")
-    List<Produto> buscarProdutosEmItensPedidos(UUID id);
+    @Query("SELECT pro FROM ItemPedido item JOIN  item.produto pro WHERE pro.id = ?1")
+    public List<Produto> buscarProdutosEmPedidos(UUID id);
     public void deleteByCodigo(Integer codigo);
-
 }
