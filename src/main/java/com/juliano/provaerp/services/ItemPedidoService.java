@@ -6,6 +6,7 @@ import com.juliano.provaerp.entity.ItemPedido;
 import com.juliano.provaerp.entity.Pedido;
 import com.juliano.provaerp.entity.Produto;
 import com.juliano.provaerp.repository.ItemPedidoRepository;
+import com.juliano.provaerp.repository.ProdutoRepository;
 import org.hibernate.engine.internal.JoinSequence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,7 +24,7 @@ public class ItemPedidoService {
     @Autowired
     private ItemPedidoRepository itemPedidoRepository;
     @Autowired
-    private ProdutoService produtoService;
+    private ProdutoRepository produtoRepository;
 
     public List<ItemPedido> buscarTodosOsItensPedidos() {
         return itemPedidoRepository.buscarTodos();
@@ -48,7 +49,7 @@ public class ItemPedidoService {
     }
 
     public Produto adcionarProdutoAoPedido(UUID idProduto) throws Exception {
-        Produto produto = produtoService.buscarPorId(idProduto);
+        Produto produto = produtoRepository.findById(idProduto).get();
         if (produto.getSituacao().equals(ProdutoSituacaoEnum.Desativado)) {
             throw new Exception("produto desativado");
         }

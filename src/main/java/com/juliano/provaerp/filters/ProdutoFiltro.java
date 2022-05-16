@@ -15,8 +15,8 @@ public class ProdutoFiltro extends FiltroGeral {
     }
 
     private void setNome(String nome) {
-        if (!Objects.isNull(nome)) {
-            
-        }
+    //        if (!Objects.isNull(nome)) {
+    //            QPro
+    //        }
     }
 }

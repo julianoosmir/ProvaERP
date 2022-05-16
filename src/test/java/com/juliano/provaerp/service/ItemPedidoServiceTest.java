@@ -9,6 +9,7 @@ import com.juliano.provaerp.repository.ItemPedidoRepository;
 import com.juliano.provaerp.services.ItemPedidoService;
 import com.juliano.provaerp.services.ProdutoService;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -24,6 +25,7 @@ import java.util.UUID;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
+@Ignore
 public class ItemPedidoServiceTest {
 
     @InjectMocks
@@ -89,6 +91,7 @@ public class ItemPedidoServiceTest {
 
     }
     @Test
+    @Ignore
     public void delete(){
         ItemPedido itemPedido = new ItemPedido();
         itemPedido.setId(UUID.randomUUID());

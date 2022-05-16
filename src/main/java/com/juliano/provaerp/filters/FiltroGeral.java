@@ -48,23 +48,23 @@ public class FiltroGeral {
     public void setSort(String direction, String fieldSort) {
         if (!Objects.isNull(fieldSort)) {
             Sort.Order order = createSortOrder(direction, fieldSort);
-            this.sort = new Sort(new Sort.Order[]{order});
+            this.sort = Sort.by(order);
         }
     }
 
     public void setSortIgnoreCase(String direction, String fieldSort) {
         if (!Objects.isNull(fieldSort)) {
             Sort.Order order = createSortOrder(direction, fieldSort);
-            this.sort = new Sort(new Sort.Order[]{order.ignoreCase()});
+            this.sort = Sort.by(order.ignoreCase());
         }
     }
 
     public PageRequest getPageRequest() {
         PageRequest pageRequest;
         if (this.sort == null) {
-            pageRequest = new PageRequest(this.page, this.size);
+            pageRequest = PageRequest.of(this.page, this.size,null);
         } else {
-            pageRequest = new PageRequest(this.page, this.size, this.sort);
+            pageRequest =PageRequest.of(this.page, this.size, this.sort);
         }
 
         return pageRequest;
