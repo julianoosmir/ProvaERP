@@ -70,6 +70,17 @@ public class FiltroGeral {
         return pageRequest;
     }
 
+    public BooleanExpression getBooleanExpression() {
+        return booleanExpression;
+    }
+
+    public void setBooleanExpression(BooleanExpression booleanExpression) {
+        if(Objects.isNull(booleanExpression)){
+            this.booleanExpression = booleanExpression;
+        }
+        this.booleanExpression = this.booleanExpression.and(booleanExpression);
+
+    }
 
     private static Sort.Order createSortOrder(String directionStr, String fieldSort) {
         Sort.Direction direction = getSortDirectionFromString(directionStr);
