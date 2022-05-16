@@ -15,6 +15,5 @@ public interface ProdutoRepository extends JpaRepository<Produto, UUID> {
     public void deleteByCodigo(Integer codigo);
 
     public Produto findByCodigo(Integer codigo);
-    @Query("SELECT pro FROM ItemPedido item JOIN FETCH item.produto pro WHERE pro.id = ?1")
-    public List<Produto> buscarProdutosEmPedidos(UUID id);
+
 }
