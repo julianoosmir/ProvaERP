@@ -57,20 +57,17 @@ public class ProdutoServiceTest {
         Page<Produto> pedidosPaginados = new PageImpl<>(produtos, pages, 10);
 
         when(produtoService.salvarProduto(produto)).thenReturn(produto);
-        when(produtoService.buscarTodosProdutos()).thenReturn(produtos);
         when(produtoService.buscarTodosProdutosPaginado(1, 10)).thenReturn(pedidosPaginados);
         when(produtoService.buscarPorCodigo(produto.getCodigo())).thenReturn(produto);
 
 
         produtoService.salvarProduto(produto);
         produtoService.buscarPorCodigo(1);
-        produtoService.buscarTodosProdutos();
         produtoService.buscarTodosProdutosPaginado(1, 10);
 
 
         verify(produtoRepository, times(1)).save(produto);
         verify(produtoRepository, times(1)).findByCodigo(produto.getCodigo());
-        verify(produtoRepository, times(1)).findAll();
         verify(produtoRepository, times(1)).findAll(pages);
 
     }

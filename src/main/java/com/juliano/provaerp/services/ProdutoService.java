@@ -2,6 +2,7 @@ package com.juliano.provaerp.services;
 
 import com.juliano.provaerp.entity.Pedido;
 import com.juliano.provaerp.entity.Produto;
+import com.juliano.provaerp.filters.ProdutoFiltro;
 import com.juliano.provaerp.repository.ItemPedidoRepository;
 import com.juliano.provaerp.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class ProdutoService {
     @Autowired
     private ItemPedidoRepository itemPedidoRepository;
 
-    public List<Produto> buscarTodosProdutos() {
-        return produtoRepository.findAll();
+    public Page<Produto> buscarTodosProdutos(ProdutoFiltro filtro) {
+        return produtoRepository.findAll(filtro.getBooleanExpression(), filtro.getPageRequest());
     }
 
     public Page<Produto> buscarTodosProdutosPaginado(int page, int size) {

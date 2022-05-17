@@ -1,25 +1,23 @@
 package com.juliano.provaerp.filters;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
+import lombok.Data;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import java.util.Map;
 import java.util.Objects;
-
 public class FiltroGeral {
-    private BooleanExpression booleanExpression;
+    protected BooleanExpression booleanExpression;
     private int size = 10;
     private int page = 0;
     private Sort sort;
 
-    public FiltroGeral(Map<String, String[]> requestMap) {
-        this.setPage(this.getValueFilter((String[]) requestMap.get("page")));
-        this.setSize(this.getValueFilter((String[]) requestMap.get("size")));
-        this.setSort(this.getValueFilter((String[])requestMap.get("direction")), this.getValueFilter((String[])requestMap.get("sort")));
+    public FiltroGeral() {
+
     }
 
-    public String getValueFilter(String[] objFilter) {
+    public static String getValueFilter(String[] objFilter) {
         return objFilter != null && !"".equals(objFilter[0]) ? String.valueOf(objFilter[0]) : null;
     }
 
@@ -62,7 +60,7 @@ public class FiltroGeral {
     public PageRequest getPageRequest() {
         PageRequest pageRequest;
         if (this.sort == null) {
-            pageRequest = PageRequest.of(this.page, this.size,null);
+            pageRequest = PageRequest.of(this.page, this.size);
         } else {
             pageRequest =PageRequest.of(this.page, this.size, this.sort);
         }
@@ -74,13 +72,7 @@ public class FiltroGeral {
         return booleanExpression;
     }
 
-    public void setBooleanExpression(BooleanExpression booleanExpression) {
-        if(Objects.isNull(booleanExpression)){
-            this.booleanExpression = booleanExpression;
-        }
-        this.booleanExpression = this.booleanExpression.and(booleanExpression);
 
-    }
 
     private static Sort.Order createSortOrder(String directionStr, String fieldSort) {
         Sort.Direction direction = getSortDirectionFromString(directionStr);
