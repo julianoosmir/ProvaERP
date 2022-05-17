@@ -2,6 +2,7 @@ package com.juliano.provaerp.repository;
 
 import com.juliano.provaerp.entity.ItemPedido;
 import com.juliano.provaerp.entity.Produto;
+import com.juliano.provaerp.interfaces.JoinCapableRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface ItemPedidoRepository extends JpaRepository<ItemPedido, UUID> {
+public interface ItemPedidoRepository extends JoinCapableRepository<ItemPedido, UUID> {
     @Query("SELECT item FROM ItemPedido item JOIN  item.produto WHERE item.codigo = ?1")
     public ItemPedido buscarPorCodigo(Integer codigo);
 

@@ -2,12 +2,14 @@ package com.juliano.provaerp.controllers;
 
 import com.juliano.provaerp.dto.ItemPedidoDTO;
 import com.juliano.provaerp.entity.ItemPedido;
+import com.juliano.provaerp.filters.ItemPedidoFiltro;
 import com.juliano.provaerp.services.ItemPedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
@@ -17,8 +19,8 @@ public class ItemPedidoController {
     private ItemPedidoService itemPedidoService;
 
     @GetMapping("/paginado")
-    public Page<ItemPedido> buscarTodosOsItensPedidos(@RequestParam("page") int page, @RequestParam("size") int size) {
-        return itemPedidoService.buscarTodosOsPedidosPaginados(page, size);
+    public Page<ItemPedido> buscarTodosOsItensPedidos(@RequestParam(required = false) Map<String, String> requestMap) {
+        return itemPedidoService.buscarTodosOsPedidosPaginados(new ItemPedidoFiltro(requestMap));
     }
 
     @GetMapping

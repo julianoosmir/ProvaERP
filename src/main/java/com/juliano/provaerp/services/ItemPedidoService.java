@@ -5,6 +5,7 @@ import com.juliano.provaerp.dto.ItemPedidoDTO;
 import com.juliano.provaerp.entity.ItemPedido;
 import com.juliano.provaerp.entity.Pedido;
 import com.juliano.provaerp.entity.Produto;
+import com.juliano.provaerp.filters.ItemPedidoFiltro;
 import com.juliano.provaerp.repository.ItemPedidoRepository;
 import com.juliano.provaerp.repository.ProdutoRepository;
 import org.hibernate.engine.internal.JoinSequence;
@@ -30,10 +31,9 @@ public class ItemPedidoService {
         return itemPedidoRepository.buscarTodos();
     }
 
-    public Page<ItemPedido> buscarTodosOsPedidosPaginados(int page, int size) {
-        List<ItemPedido> itemPedidos = itemPedidoRepository.buscarTodos();
-        Pageable pages = PageRequest.of(page, size);
-        return new PageImpl<>(itemPedidos, pages, size);
+    public Page<ItemPedido> buscarTodosOsPedidosPaginados(ItemPedidoFiltro itemPedidoFiltro) {
+        return itemPedidoRepository.findAll(itemPedidoFiltro.getBooleanExpression(),
+                itemPedidoFiltro.getPageRequest());
     }
 
     public ItemPedido buscarItemPorCodigo(Integer codigo) {
@@ -64,5 +64,6 @@ public class ItemPedidoService {
     public void deletarItemPedido(Integer codigo) {
         itemPedidoRepository.deleteByCodigo(codigo);
     }
+
 
 }
