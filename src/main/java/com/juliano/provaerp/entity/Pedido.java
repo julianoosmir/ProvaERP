@@ -27,7 +27,7 @@ public class Pedido {
     private PedidoSituacaoEnum situacao;
     @Column(name = "pe_total", nullable = false)
     private BigDecimal valorTotal;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "ip_id", referencedColumnName = "ip_id")
     private ItemPedido itemPedido;
 

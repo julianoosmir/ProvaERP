@@ -16,7 +16,7 @@ public class ItemPedido {
     private UUID id;
     @Column(name = "ip_codigo", nullable = false, unique = true)
     private Integer codigo;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "pr_id", referencedColumnName = "pr_id")
     private Produto produto;
     @Column(name = "ip_qtd")
