@@ -67,7 +67,13 @@ public class FiltroGeral {
 
         return pageRequest;
     }
+    public void setBooleanExpression(BooleanExpression booleanExpression) {
+        if (Objects.isNull(this.booleanExpression)) {
+            this.booleanExpression = booleanExpression;
+        }
+        this.booleanExpression = this.booleanExpression.and(booleanExpression);
 
+    }
     public BooleanExpression getBooleanExpression() {
         return booleanExpression;
     }
