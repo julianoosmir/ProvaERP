@@ -1,6 +1,7 @@
 package com.juliano.provaerp.repository;
 
 import com.juliano.provaerp.entity.Pedido;
+import com.juliano.provaerp.interfaces.JoinCapableRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface PedidoRepository extends JpaRepository<Pedido, UUID> {
+public interface PedidoRepository extends JoinCapableRepository<Pedido, UUID> {
     @Query("SELECT pe FROM Pedido pe JOIN FETCH pe.itemPedido item JOIN FETCH item.produto")
     public List<Pedido> buscarTodosOsPedidos();
 

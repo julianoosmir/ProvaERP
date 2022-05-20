@@ -28,10 +28,6 @@ public class ProdutoService {
         return produtoRepository.findAll(filtro.getBooleanExpression(), filtro.getPageRequest());
     }
 
-    public Page<Produto> buscarTodosProdutosPaginado(int page, int size) {
-        Pageable pages = PageRequest.of(page, size);
-        return produtoRepository.findAll(pages);
-    }
 
     public Produto buscarPorCodigo(Integer codigo) {
         return produtoRepository.findByCodigo(codigo);

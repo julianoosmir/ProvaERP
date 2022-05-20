@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -34,12 +35,12 @@ public class ItemPedidoController {
     }
 
     @PostMapping
-    public ItemPedido salvarItemPedido(@RequestBody ItemPedidoDTO itemPedido) throws Exception {
+    public ItemPedido salvarItemPedido(@Valid @RequestBody ItemPedidoDTO itemPedido) throws Exception {
         return itemPedidoService.salvarItemPedido(itemPedido);
     }
 
     @PutMapping
-    public ItemPedido atualizarItemPedido(@RequestBody ItemPedido itemPedido) {
+    public ItemPedido atualizarItemPedido(@Valid    @RequestBody ItemPedido itemPedido) {
         return itemPedidoService.atualizarItemPedido(itemPedido);
     }
 

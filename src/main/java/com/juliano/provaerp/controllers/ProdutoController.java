@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -23,21 +24,17 @@ public class ProdutoController {
     public Page<Produto> buscarTodosOsProdutos(@RequestParam Map<String, String> requestMap) {
         return produtoService.buscarTodosProdutos(new ProdutoFiltro(requestMap));
     }
-    @GetMapping("/paginado")
-    public Page<Produto> buscarTodosProdutosPaginado(@RequestParam("page") int page,@RequestParam("size") int size){
-        return produtoService.buscarTodosProdutosPaginado(page,size);
-    }
     @GetMapping("/{codigo}")
     public Produto buscarPorProdutoId(@PathVariable Integer codigo){
         return produtoService.buscarPorCodigo(codigo);
     }
     @PostMapping
-    public Produto salvarProduto(@RequestBody Produto produto) {
+    public Produto salvarProduto(@Valid @RequestBody Produto produto) {
         return produtoService.salvarProduto(produto);
     }
 
     @PutMapping
-    public Produto atualizarProduto(@RequestBody Produto produto) {
+    public Produto atualizarProduto(@Valid @RequestBody Produto produto) {
         return produtoService.atualizarProduto(produto);
     }
 
