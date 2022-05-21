@@ -54,11 +54,11 @@ public class ProdutoServiceTest {
 
         Pageable pages = PageRequest.of(1, 10);
 
-        Page<Produto> pedidosPaginados = new PageImpl<>(produtos, pages, 10);
+        Page<Produto> produtosPaginados = new PageImpl<>(produtos, pages, 10);
 
         when(produtoService.salvarProduto(produto)).thenReturn(produto);
         when(produtoService.buscarTodosProdutos()).thenReturn(produtos);
-        when(produtoService.buscarTodosProdutosPaginado(1, 10)).thenReturn(pedidosPaginados);
+        when(produtoService.buscarTodosProdutosPaginado(1, 10)).thenReturn(produtosPaginados);
         when(produtoService.buscarPorCodigo(produto.getCodigo())).thenReturn(produto);
 
 
