@@ -4,7 +4,7 @@ Essa prova tem  como  objetivo  avaliar três  possíveis  níveis  de  conhecim
 # Requisitos não funcionais para exucutar o projeto
 
  - Banco de dados PostgreSQL
- - Java 8+
+ - Java 11
  - Maven
     
 # A Prova
