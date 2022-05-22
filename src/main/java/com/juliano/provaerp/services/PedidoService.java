@@ -5,16 +5,12 @@ import com.juliano.provaerp.Enum.ProdutoCategoriaEnum;
 import com.juliano.provaerp.dto.PedidoDTO;
 import com.juliano.provaerp.entity.Pedido;
 import com.juliano.provaerp.entity.Produto;
-import com.juliano.provaerp.filters.PedidoFilter;
+import com.juliano.provaerp.filters.PedidoFiltro;
 import com.juliano.provaerp.repository.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -29,9 +25,9 @@ public class PedidoService {
         return pedidoRepository.buscarTodosOsPedidos();
     }
 
-    public Page<Pedido> buscarTodosOsPedidosPaginados(PedidoFilter pedidoFilter) {
-        return pedidoRepository.findAll(pedidoFilter.getBooleanExpression(),
-                pedidoFilter.getPageRequest());
+    public Page<Pedido> buscarTodosOsPedidosPaginados(PedidoFiltro pedidoFiltro) {
+        return pedidoRepository.findAll(pedidoFiltro.getBooleanExpression(),
+                pedidoFiltro.getPageRequest());
     }
 
     public Pedido buscarPorCodigo(Integer codigo) {

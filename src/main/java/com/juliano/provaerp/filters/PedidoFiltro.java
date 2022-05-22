@@ -9,9 +9,9 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Map;
 import java.util.Objects;
 
-public class PedidoFilter extends FiltroGeral {
+public class PedidoFiltro extends FiltroGeral {
 
-    public PedidoFilter(Map<String, String> requestMap) {
+    public PedidoFiltro(Map<String, String> requestMap) {
         this.setPage((String) requestMap.get("page"));
         this.setSize((String) requestMap.get("size"));
         this.setSort((String) requestMap.get("direction"), (String) requestMap.get("sort"));

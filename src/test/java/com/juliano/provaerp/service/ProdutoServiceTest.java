@@ -55,31 +55,27 @@ public class ProdutoServiceTest {
 
 
         Map<String, String> requestMap = new HashMap<>();
-        requestMap.put("size","10");
-        requestMap.put("page","1");
+        requestMap.put("size", "10");
+        requestMap.put("page", "1");
 
+        ProdutoFiltro produtoFiltro = new ProdutoFiltro(requestMap);
 
         when(produtoService.salvarProduto(produto)).thenReturn(produto);
         when(produtoService.buscarPorCodigo(produto.getCodigo())).thenReturn(produto);
-        when(produtoService.buscarTodosProdutos(new ProdutoFiltro(requestMap))).thenReturn(produtosPaginados);
+        when(produtoService.buscarTodosProdutos(produtoFiltro)).thenReturn(produtosPaginados);
 
 
         produtoService.salvarProduto(produto);
         produtoService.buscarPorCodigo(1);
+        produtoService.buscarTodosProdutos(produtoFiltro);
 
 
         verify(produtoRepository, times(1)).save(produto);
         verify(produtoRepository, times(1)).findByCodigo(produto.getCodigo());
+        verify(produtoRepository, times(1))
+                .findAll(produtoFiltro.getBooleanExpression(), produtoFiltro.getPageRequest());
 
     }
 
-//    public ProdutoFiltro criarFiltro(String chave,String valor){
-//
-//        Map<String, String> requestMap = new HashMap<>();
-//        requestMap.put()
-//
-//
-//        return new ProdutoFiltro(requestMap);
-//    }
 
 }

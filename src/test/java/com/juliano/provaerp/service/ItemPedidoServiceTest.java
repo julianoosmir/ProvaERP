@@ -4,7 +4,9 @@ import com.juliano.provaerp.Enum.ProdutoCategoriaEnum;
 import com.juliano.provaerp.Enum.ProdutoSituacaoEnum;
 import com.juliano.provaerp.dto.ItemPedidoDTO;
 import com.juliano.provaerp.entity.ItemPedido;
+import com.juliano.provaerp.entity.Pedido;
 import com.juliano.provaerp.entity.Produto;
+import com.juliano.provaerp.filters.ItemPedidoFiltro;
 import com.juliano.provaerp.repository.ItemPedidoRepository;
 import com.juliano.provaerp.services.ItemPedidoService;
 import com.juliano.provaerp.services.ProdutoService;
@@ -16,11 +18,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static org.mockito.Mockito.*;
 
@@ -68,14 +72,26 @@ public class ItemPedidoServiceTest {
         List<ItemPedido> itemPedidos = new ArrayList<>();
         itemPedidos.add(itemPedido);
 
+        Map<String, String> requestMap = new HashMap<>();
+        requestMap.put("size", "10");
+        requestMap.put("page", "1");
+
+        ItemPedidoFiltro filtro = new ItemPedidoFiltro(requestMap);
+
+        Pageable pages = PageRequest.of(1, 10);
+
+        Page<ItemPedido> pedidosPaginados = new PageImpl<>(itemPedidos, pages, 10);
         when(itemPedidoService.buscarItemPorCodigo(itemDTO.getCodigo())).thenReturn(itemPedido);
         when(itemPedidoService.buscarTodosOsItensPedidos()).thenReturn(itemPedidos);
+        when(itemPedidoService.buscarTodosOsPedidosPaginados(filtro)).thenReturn(pedidosPaginados);
 
 
         itemPedidoService.buscarItemPorCodigo(itemDTO.getCodigo());
         itemPedidoService.buscarTodosOsItensPedidos();
+        itemPedidoService.buscarTodosOsPedidosPaginados(filtro);
         verify(itemPedidoRepository, times(1)).buscarPorCodigo(1);
         verify(itemPedidoRepository, times(1)).buscarTodos();
+        verify(itemPedidoRepository,times(1)).findAll(filtro.getBooleanExpression(),filtro.getPageRequest());
 
     }
     @Test

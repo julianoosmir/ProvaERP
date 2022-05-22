@@ -7,6 +7,7 @@ import com.juliano.provaerp.dto.PedidoDTO;
 import com.juliano.provaerp.entity.ItemPedido;
 import com.juliano.provaerp.entity.Pedido;
 import com.juliano.provaerp.entity.Produto;
+import com.juliano.provaerp.filters.PedidoFiltro;
 import com.juliano.provaerp.repository.PedidoRepository;
 import com.juliano.provaerp.services.ItemPedidoService;
 import com.juliano.provaerp.services.PedidoService;
@@ -18,11 +19,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static org.mockito.Mockito.*;
 
@@ -74,14 +77,29 @@ public class PedidoServiceTest {
         List<Pedido> pedidos = new ArrayList<>();
         pedidos.add(pedido);
 
+        Map<String, String> requestMap = new HashMap<>();
+        requestMap.put("size", "10");
+        requestMap.put("page", "1");
+
+        PedidoFiltro filtro = new PedidoFiltro(requestMap);
+
+        Pageable pages = PageRequest.of(1, 10);
+
+        Page<Pedido> pedidosPaginados = new PageImpl<>(pedidos, pages, 10);
+
+
         when(pedidoService.buscarTodosOsPedidos()).thenReturn(pedidos);
         when(pedidoService.buscarPorCodigo(1)).thenReturn(pedido);
+        when(pedidoService.buscarTodosOsPedidosPaginados(filtro)).thenReturn(pedidosPaginados);
 
         pedidoService.buscarTodosOsPedidos();
         pedidoService.buscarPorCodigo(1);
+        pedidoService.buscarTodosOsPedidosPaginados(filtro);
 
         verify(pedidoRepository, times(1)).buscarTodosOsPedidos();
         verify(pedidoRepository, times(1)).buscarPedidoPorCodigo(1);
+        verify(pedidoRepository,times(1)).findAll(filtro.getBooleanExpression(),
+                filtro.getPageRequest());
 
     }
 
