@@ -40,7 +40,7 @@ public class ItemPedidoController {
     }
 
     @PutMapping
-    public ItemPedido atualizarItemPedido(@Valid    @RequestBody ItemPedido itemPedido) {
+    public ItemPedido atualizarItemPedido(@Valid @RequestBody ItemPedido itemPedido) {
         return itemPedidoService.atualizarItemPedido(itemPedido);
     }
 

@@ -13,7 +13,7 @@ public class PedidoDTO {
     private BigDecimal desconto;
     @NotNull(message = "codigo necessario")
     private Integer codigoPedido;
-    @NotNull(message = "item do pedido não pode ser nulo")
+    @NotNull(message = "item do pedido necessario")
     private Integer codigoItemPedido;
     @NotNull(message = "insira o status do pedido")
     private PedidoSituacaoEnum situacao;
