@@ -9,12 +9,18 @@ Essa prova tem  como  objetivo  avaliar três  possíveis  níveis  de  conhecim
 
 # A Prova
 
-Requisitos da prova:
+Requisitos da PROVA NÍVEL II:
 
 - Deverá ser desenvolvido um cadastro (Create/Read/Update/Delete/List) para as seguintes entidades: produto/serviço, pedido e itens de pedido
 - Todos as entidades deverão ter um ID único do tipo UUID
+- Deverá ser possível aplicar filtros na listagem
+- As entidades deverão utilizar Bean Validation
+- Deverá ser implementado um ControllerAdvice para customizar os HTTP Response das requisições (mínimo BAD REQUEST)
 - No cadastro de produto/serviço deverá ter uma indicação para diferenciar um produto de um serviço
 - Deverá ser possível aplicar um percentual de desconto no pedido, porém apenas para os itens que sejam produto (não serviço); o desconto será sobre o valor total dos produtos
+- Somente será possível aplicar desconto no pedido se ele estiver na situação Aberto (Fechado bloqueia)
+- Não deve ser possível excluir um produto/serviço se ele estiver associado a algum pedido
+- Não deve ser possível adicionar um produto desativado em um pedido
 
 # Documentação minima
 
