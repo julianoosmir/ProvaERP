@@ -1,7 +1,6 @@
 # PROVA PARA DESENVOLVEDORBACKEND JAVA -ERP
 
-Essa prova tem  como  objetivo  avaliar três  possíveis  níveis  de  conhecimentousando  a  mesma problemática,sendo cada nível mais complexo do que o outro.
-
+Essa prova tem  como  objetivo  avaliar três  possíveis  níveis  de  conhecimento usando  a  mesma problemática, sendo cada nível mais complexo do que o outro
 # Requisitos não funcionais para exucutar o projeto
 
  - Banco de dados PostgreSQL
@@ -10,7 +9,7 @@ Essa prova tem  como  objetivo  avaliar três  possíveis  níveis  de  conhecim
 
 # A Prova
 
-A prova e dividida em tres partes
+A prova é dividida em três partes
 
 - __PROVA NÍVEL I:__ esta  completa na branch Prova_nivel_I
 - __PROVA NÍVEL II:__ esta  completa na branch Prova_nivel_II
