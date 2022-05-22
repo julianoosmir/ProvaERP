@@ -6,7 +6,7 @@ Essa prova tem  como  objetivo  avaliar três  possíveis  níveis  de  conhecim
  - Banco de dados PostgreSQL
  - Java 11
  - Maven
-    
+
 # A Prova
 
 Requisitos da prova:
@@ -18,11 +18,11 @@ Requisitos da prova:
 
 # Documentação minima
 
-Para executar o projeto via maven utilize o comando : mvn clean install  spring-boot:run
+Para executar o projeto via maven utilize o comando : mvn clean install spring-boot:run
 
-Em todas as branchs das provas haverá  ducumentação com swagger ui :
+Em todas as branchs das provas haverá ducumentação com swagger ui:
 
 http://localhost:8080/swagger-ui/index.html#/
 # Observações
-- Como não a diagrama de classe, então tomei a liberdade de modelar as entidade ao meu gosto 
+- Como não a diagrama de classe, então tomei a liberdade de modelar as entidades ao meu gosto 
 - não foi possível conectar o banco de dados aos testes;
