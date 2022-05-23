@@ -30,5 +30,5 @@ Em todas as branchs das provas haverá ducumentação com swagger ui:
 
 http://localhost:8080/swagger-ui/index.html#/
 # Observações
-- Como não a diagrama de classe, então tomei a liberdade de modelar as entidades ao meu gosto 
+- Como não há diagrama de classe, então tomei a liberdade de modelar as entidades ao meu gosto 
 - não foi possível conectar o banco de dados aos testes;
