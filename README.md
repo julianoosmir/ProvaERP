@@ -1,7 +1,7 @@
 # PROVA PARA DESENVOLVEDOR BACKEND JAVA -ERP
 
-Essa prova tem  como  objetivo  avaliar três  possíveis  níveis  de  conhecimento usando  a  mesma problemática, sendo cada nível mais complexo do que o outro
-# Requisitos não funcionais para exucutar o projeto
+Essa prova tem como objetivo  avaliar três  possíveis níveis de conhecimento usando  a  mesma problemática, sendo cada nível mais complexo do que o outro
+# Requisitos não funcionais para executar o projeto
 
  - Banco de dados PostgreSQL
  - Java 11
@@ -20,7 +20,7 @@ Requisitos da prova:
 
 Para executar o projeto via maven utilize o comando : mvn clean install spring-boot:run
 
-Em todas as branchs das provas haverá ducumentação com swagger ui:
+Em todas as branchs das provas haverá documentação com swagger ui:
 
 http://localhost:8080/swagger-ui/index.html#/
 # Observações
