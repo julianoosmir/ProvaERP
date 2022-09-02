@@ -6,11 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class ProvaErpApplicationTests {
-
-    public static void main(String[] args) {
-        SpringApplication.run(ProvaErpApplicationTests.class, args);
-    }
-
     @Test
     void contextLoads() {
     }

@@ -10,6 +10,7 @@ import com.juliano.provaerp.filters.ItemPedidoFiltro;
 import com.juliano.provaerp.repository.ItemPedidoRepository;
 import com.juliano.provaerp.services.ItemPedidoService;
 import com.juliano.provaerp.services.ProdutoService;
+import com.juliano.provaerp.util.ProdutoUtil;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -44,13 +45,7 @@ public class ItemPedidoServiceTest {
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
-        produto = new Produto();
-        produto.setId(UUID.randomUUID());
-        produto.setCodigo(1);
-        produto.setCategoria(ProdutoCategoriaEnum.BemDeConsumo);
-        produto.setSituacao(ProdutoSituacaoEnum.Ativado);
-        produto.setNome("teste");
-        produto.setPreco(BigDecimal.ONE);
+        produto = ProdutoUtil.criarProduto();
         produtoService.salvarProduto(produto);
     }
 

@@ -1,14 +1,11 @@
 package com.juliano.provaerp.services;
 
-import com.juliano.provaerp.entity.Pedido;
 import com.juliano.provaerp.entity.Produto;
 import com.juliano.provaerp.filters.ProdutoFiltro;
 import com.juliano.provaerp.repository.ItemPedidoRepository;
 import com.juliano.provaerp.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

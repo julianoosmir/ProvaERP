@@ -14,7 +14,6 @@ import java.util.UUID;
 public interface ProdutoRepository extends JoinCapableRepository<Produto, UUID> {
 
     public void deleteByCodigo(Integer codigo);
-
     public Produto findByCodigo(Integer codigo);
 
 }
