@@ -1,0 +1,1 @@
+//insert into tb_produtos(pr_codigo,pr_preco,pr_nome,pr_categoria,pr_situacao) values (1,1)

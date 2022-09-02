@@ -33,7 +33,6 @@ public class Produto {
     @Column(name = "pr_nome", nullable = false)
     private String nome;
     @Column(name = "pr_categoria")
-
     @NotNull(message = "insira a categoria do produto")
     @Enumerated(EnumType.STRING)
     private ProdutoCategoriaEnum categoria;
