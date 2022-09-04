@@ -265,6 +265,7 @@ public class ProdutoControllerTest {
     public void buscar() throws Exception {
         mockMvc.perform(get("/produtos"))
                 .andExpect(status().isOk());
+
         mockMvc.perform(get("/produtos")
                         .param("page", "1")
                         .param("size", "10"))

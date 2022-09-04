@@ -1,1 +1,1 @@
-//insert into tb_produtos(pr_codigo,pr_preco,pr_nome,pr_categoria,pr_situacao) values (1,1)
+insert into tb_produtos(pr_id,pr_codigo,pr_preco,pr_nome,pr_categoria,pr_situacao) values ('524f0863-92fb-4c35-a0a8-8d187553852b',10,1,'testando','BemDeConsumo','Ativado');

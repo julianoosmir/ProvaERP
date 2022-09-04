@@ -11,6 +11,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.UUID;
+
 @DisplayName("Tests for Produto Repository")
 @AutoConfigureTestDatabase
 @RunWith(SpringRunner.class)
@@ -33,5 +35,10 @@ public class ProdutoRepositoryTest {
 
         Assertions.assertThat(p.getNome()).isEqualTo(produto.getNome());
 
+    }
+    @Test
+    public void findByID(){
+        Produto p = produtoRepository.getById(UUID.fromString("524f0863-92fb-4c35-a0a8-8d187553852b"));
+        Assertions.assertThat(p.getNome()).isEqualTo("testando");
     }
 }

@@ -28,7 +28,9 @@ public class ProdutoService {
         return produtoRepository.findAll(filtro.getBooleanExpression(), filtro.getPageRequest());
     }
 
-
+    public List<Produto> buscarTodos(){
+        return produtoRepository.findAll();
+    }
     public Produto buscarPorCodigo(Integer codigo) {
         return produtoRepository.findByCodigo(codigo);
     }

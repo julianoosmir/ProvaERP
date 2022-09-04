@@ -6,24 +6,35 @@ import com.juliano.provaerp.entity.Produto;
 import com.juliano.provaerp.filters.ProdutoFiltro;
 import com.juliano.provaerp.repository.ProdutoRepository;
 import com.juliano.provaerp.services.ProdutoService;
+import com.juliano.provaerp.util.ProdutoUtil;
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.util.*;
 
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(SpringExtension.class)
 public class ProdutoServiceTest {
 
     @InjectMocks
@@ -38,13 +49,7 @@ public class ProdutoServiceTest {
 
     @Test
     public void InserirEBuscar() {
-        Produto produto = new Produto();
-        produto.setId(UUID.randomUUID());
-        produto.setCodigo(1);
-        produto.setCategoria(ProdutoCategoriaEnum.BemDeConsumo);
-        produto.setSituacao(ProdutoSituacaoEnum.Ativado);
-        produto.setNome("teste");
-        produto.setPreco(BigDecimal.ONE);
+        Produto produto = ProdutoUtil.criarProduto();
 
         List<Produto> produtos = new ArrayList<>();
         produtos.add(produto);
@@ -77,5 +82,11 @@ public class ProdutoServiceTest {
 
     }
 
-
+    @Test
+    public void buscarTodos(){
+        List<Produto> produtos = produtoService.buscarTodos();
+        Assertions.assertThat(produtos)
+                .isNotNull()
+                .isEmpty();
+    }
 }
